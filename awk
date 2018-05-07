@@ -21,6 +21,10 @@ awk '{for(i=1; i<NF; i++) for(j=i+1; j<=NF; j++) if($i==$j) $j=x; $0=$0; $1=$1 }
 4. Five line 2 two line
 awk 'ORS=NR%5?"\t":"\n"{print}' test
 
+5. fastq2fasta
+awk 'NR%4==1 || NR%4==2'|sed 's/^@/>/' fastq > fasta
+
+
 
 
 
