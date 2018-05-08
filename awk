@@ -14,6 +14,7 @@ max and min use sort
 
 2. Transpose a matrix with TAB as field delimiter
 datamash  transpose <test.input
+awk '{for(i=1;i<=NF;i++){a[FNR,i]=$i}}END{for(i=1;i<=NF;i++){for(j=1;j<=FNR;j++){printf a[j,i]"\t"}print ""}}'
 
 3. Uniq function in each row
 awk '{for(i=1; i<NF; i++) for(j=i+1; j<=NF; j++) if($i==$j) $j=x; $0=$0; $1=$1 }1' test.number
