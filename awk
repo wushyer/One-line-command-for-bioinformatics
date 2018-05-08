@@ -24,6 +24,8 @@ awk 'ORS=NR%5?"\t":"\n"{print}' test
 5. fastq2fasta
 awk 'NR%4==1 || NR%4==2'|sed 's/^@/>/' fastq > fasta
 
+6. N50 calculation
+awk '/^>/&&NR>1{print "";}{ printf "%s",/^>/ ? $0" ":$0 }'  all-chrC-chrM.fa|awk '{print length($NF)}'|awk '{sum += $0; print $0, sum}' | tac | awk 'NR==1 {half=$2/2} last>half && $2<half {print} {last=$2}'
 
 
 
